@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GARUNA SITE - Blog</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #e0e0e0;
+            padding-top: 40px;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+        }
+
+        .contenido {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 id="blog-title">Blog</h1>
+    </div>
+
+    <div class="contenido">
+        <p>Escribe aquí tu blog...</p>
+    </div>
+
+    <script src="../program files/index/menu.js"></script>
+    <script>
+        // Obtener el nombre del fichero (sin extensión) y usarlo como título
+        (function () {
+            var path = window.location.pathname;
+            var fileName = path.substring(path.lastIndexOf('/') + 1); // EJEMPLO.html
+            var baseName = fileName.replace(/\.[^/.]+$/, '');         // EJEMPLO
+
+            // Título "bonito": reemplaza guiones por espacios
+            var niceTitle = baseName.replace(/-/g, ' ');
+
+            // Actualizar <h1> y <title>
+            var h1 = document.getElementById('blog-title');
+            if (h1) {
+                h1.textContent = niceTitle;
+            }
+            document.title = niceTitle + ' - GARUNA SITE';
+        })();
+    </script>
+</body>
+</html>
