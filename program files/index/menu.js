@@ -100,7 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Enlaces de menú con IDs lógicos para poder traducirlos
     var items = [
         { id: 'home',   href: basePrefix + 'index.html' },
-        { id: 'blogs',  href: basePrefix + 'blogs.html' }
+        { id: 'blogs',  href: basePrefix + 'blogs.html' },
+        { id: 'galeria',  href: basePrefix + 'galeria.html' }
     ];
 
     var menuLinks = {};
@@ -143,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
             menu: {
                 home: 'Hasiera',
                 blogs: 'Blogak',
+                galeria: 'Galeria',
                 language: 'Hizkuntza'
             },
             indexIntro: 'Ongietorri nire orrira. Hemen eduki interesgarria erakutsiko dut.'
@@ -150,7 +152,8 @@ document.addEventListener('DOMContentLoaded', function () {
         es: {
             menu: {
                 home: 'Inicio',
-                blogs: 'Blogs',
+                blogs: 'Blogs', 
+                galeria: 'Galeria',
                 language: 'Idioma'
             },
             indexIntro: 'Bienvenido a mi página. Aquí iré mostrando información y contenido interesante.'
@@ -158,7 +161,8 @@ document.addEventListener('DOMContentLoaded', function () {
         en: {
             menu: {
                 home: 'Home',
-                blogs: 'Blogs',
+                blogs: 'Blogs', 
+                galeria: 'Gallery',
                 language: 'Language'
             },
             indexIntro: 'Welcome to my page. I will show information and interesting content here.'
@@ -247,9 +251,9 @@ document.addEventListener('DOMContentLoaded', function () {
         var base = match[1];
         var ext = match[3] || '.html';
 
-        // Para la página principal (index) NO cambiamos de archivo,
+        // Para la página principal (index) y la galeria NO cambiamos de archivo,
         // solo se traducen textos con applyTranslations.
-        if (base.toLowerCase() === 'index') {
+        if (base.toLowerCase() === 'index' || base.toLowerCase() === 'galeria') {
             return;
         }
 
