@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
             align-items: center;
             gap: 20px;
             text-align: left;
+            background-color: #e0e0e0; /* fondo gris */
+            padding: 15px;
+            border-radius: 8px;
         }
 
         /* Alternar orden texto / foto */
@@ -48,41 +51,77 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
     document.head.appendChild(style);
 
-    // 2. Datos de los blogs (añádelos manualmente aquí)
-    // Cada entrada debe tener:
+    // 2. Datos de los blogs (independientes del idioma)
+    //  - base: nombre base del fichero (Irati -> Irati_es.html, Irati_eus.html, ...)
     //  - titulo: cómo quieres que se vea el nombre
-    //  - resumen: pequeño texto descriptivo
+    //  - resumen: pequeño texto descriptivo (puedes traducirlo si quieres)
     //  - imagen: ruta a la imagen (por ejemplo media/blogs/Irati.jpg)
-    //  - url: ruta al html del blog (por ejemplo blogs/Irati.html)
     const blogs = [
         {
+            base: 'Irati',
             titulo: 'Irati',
-            resumen: 'Un paseo por la selva de Irati.',
-            imagen: 'media/blogs/Irati.jpg',
-            url: 'blogs/Irati.html'
+            resumen: {
+                eu: 'Iratiko basoan barrena ibilaldi bat.',
+                es: 'Un paseo por la selva de Irati.',
+                en: 'A walk through the Irati forest.'
+            },
+            imagen: 'media/blogs/Irati.jpg'
         },
         {
+            base: 'Fotografia',
             titulo: 'Fotografía',
-            resumen: 'Consejos sobre la fotografía.',
-            imagen: 'media/blogs/Fotografia.jpg',
-            url: 'blogs/Fotografia.html'
+            resumen: {
+                eu: 'Argazkigintzari buruzko aholkuak.',
+                es: 'Consejos sobre la fotografía.',
+                en: 'Tips about photography.'
+            },
+            imagen: 'media/blogs/Fotografia.jpg'
         },
         {
+            base: 'Zumaia',
             titulo: 'Zumaia',
-            resumen: 'Un paseo por Zumaia.',
-            imagen: 'media/blogs/Zumaia.jpg',
-            url: 'blogs/Zumaia.html'
+            resumen: {
+                eu: 'Zumaian barrena ibilaldi bat.',
+                es: 'Un paseo por Zumaia.',
+                en: 'A walk around Zumaia.'
+            },
+            imagen: 'media/blogs/Zumaia.jpg'
+        }
+        ,
+        {
+            base: 'Potes',
+            titulo: 'Potes',
+            resumen: {
+                eu: 'Aste buru bat Potes inguruan furgonetan.',
+                es: 'Un fin de semana por Potes en furgoneta.',
+                en: 'A weekend trip to Potes in a van.'
+            },
+            imagen: 'media/blogs/Potes.jpg'
         }
         // Añade aquí más blogs con el mismo formato
         // {
+        //     base: 'Otro',
         //     titulo: 'Otro blog',
-        //     resumen: 'Descripción corta del blog.',
-        //     imagen: 'media/blogs/Otro blog.jpg',
-        //     url: 'blogs/Otro blog.html'
+        //     resumen: {
+        //         eu: 'Deskribapen laburra euskaraz.',
+        //         es: 'Descripción corta en español.',
+        //         en: 'Short description in English.'
+        //     },
+        //     imagen: 'media/blogs/Otro.jpg'
         // }
     ];
 
-    // 3. Pintar la lista alternando texto/foto
+    // Sufijo de fichero según idioma actual (eu/es/en) guardado por menu.js
+    var lang = 'eu';
+    try {
+        var storedLang = window.localStorage.getItem('garuna_lang');
+        if (storedLang) lang = storedLang;
+    } catch (e) {}
+
+    var suffixMap = { eu: 'eus', es: 'es', en: 'eng' };
+    var langSuffix = suffixMap[lang] || 'es';
+
+    // 3. Pintar la lista alternando texto/foto, con URL dependiente del idioma
     const blogList = document.getElementById('blog-list');
     if (!blogList) return;
 
@@ -90,11 +129,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const item = document.createElement('article');
         item.className = 'blog-item' + (index % 2 === 1 ? ' reverse' : '');
 
+        const url = 'blogs/' + blog.base + '_' + langSuffix + '.html';
+        const resumenTexto = (blog.resumen && blog.resumen[lang]) || blog.resumen?.es || '';
+
         item.innerHTML = `
             <div class="blog-text">
                 <h2>${blog.titulo}</h2>
-                <p>${blog.resumen}</p>
-                <a href="${blog.url}">Leer más</a>
+                <p>${resumenTexto}</p>
+                <a href="${url}">Leer más</a>
             </div>
             <div class="blog-image">
                 <img src="${blog.imagen}" alt="${blog.titulo}">

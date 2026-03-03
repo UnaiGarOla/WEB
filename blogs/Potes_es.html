@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>GARUNA SITE - Blog</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #e0e0e0;
+            padding-top: 40px;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+        }
+
+        .contenido {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .foto-articulo {
+            width: 80%;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        figure {
+            margin: 30px 0;
+            text-align: center; /* centra imagen + texto */
+        }
+
+        figcaption {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 id="blog-title">Blog</h1>
+    </div>
+
+    <div class="contenido">
+        <h1>Desfiladero de la Hermida y alrededores de Potes</h1>
+
+        <p>
+            Este fin de semana estuvimos por el Desfiladero de la Hermida, cerca del encantador pueblo de Potes. 
+            El desfiladero es impresionante, una carretera sinuosa entre montañas, con paredes casi verticales y el río abajo acompañando. 
+            Desde el primer momento, te das cuenta de que estás en un lugar especial: naturaleza salvaje, silencio y paisajes impactantes.
+        </p>
+        <figure>
+            <img class="foto-articulo" src="../media/blogs/Potes/1.jpg" alt="Potes">
+            <figcaption>El puente antiguo del pueblo de Potes.</figcaption>
+        </figure>
+
+        <p>
+            Potes en sí es un pueblo muy pintoresco, con casas de piedra, puentes antiguos y un ambiente tranquilo entre montañas. 
+            Perfecto para pasear y desconectar.
+        </p>
+
+        <h2>Nuestro plan</h2>
+
+        <h3>Sábado</h3>
+
+        <p>
+            Primero visitamos Potes. Paseamos tranquilamente por sus calles, sacamos algunas fotos (imposible no hacerlo) 
+            y disfrutamos del ambiente.
+        </p>
+        <figure>
+            <img class="foto-articulo" src="../media/blogs/Potes/3.jpg" alt="Potes herria">
+            <figcaption>Potes por la tarde.</figcaption>
+        </figure>
+        <p>
+            Por la tarde, fuimos al Balneario de la Hermida. El lugar es muy bonito, pero lo que realmente lo hace especial 
+            es el placer absoluto de las piscinas de agua caliente, con unas vistas impresionantes al exterior. 
+            Sumergirse en el agua caliente rodeado de montañas te deja sin palabras. Momentos así te hacen pensar: 
+            <em>“¡Esto sí que es vida!”</em>
+        </p>
+
+        <p>
+            Por la noche, cenamos en el restaurante <a href="https://maps.app.goo.gl/dpar3228vb8X8yg97" target="_blank">La Juana</a>. Comimos un gran cachopo acompañado de las croquetas del lugar. 
+            Después de un día así, una cena contundente sienta perfecta. ¡Delicioso!
+        </p>
+
+        <h3>Domingo</h3>
+
+        <p>
+            Un poco de aventura: hicimos la Vía Ferrata de Camaleño. Una experiencia inigualable. 
+            Incluso pasamos por un puente de nivel K3, donde se siente tensión por un momento… 
+            pero al mismo tiempo una satisfacción enorme. Las vistas desde la altura valen totalmente la pena.
+        </p>
+        <figure>
+            <img class="foto-articulo" src="../media/blogs/Potes/2.jpg" alt="Via Ferrata">
+            <figcaption>Vía Ferrata de Camaleño.</figcaption>
+        </figure>
+
+        <p>
+            Después visitamos Mogrovejo, el pueblo donde se grabó Heidi. Un lugar pequeño y encantador, 
+            rodeado de montañas, parece sacado de un cuento.
+        </p>
+
+        <p>
+            Y para cerrar el fin de semana, almorzamos en el Merendero de Los Llanos. Al aire libre, tranquilos, 
+            una forma perfecta de terminar el fin de semana.
+        </p>
+
+        <p class="cierre">
+            Un fin de semana sencillo, pero con un plan perfecto: naturaleza, tranquilidad, un poco de aventura y buena comida. 
+            <strong>¿Qué más se puede pedir?</strong>
+        </p>
+    </div>
+
+    <script src="../program files/index/menu.js"></script>
+    <script>
+        (function () {
+            var path = window.location.pathname;
+            var fileName = path.substring(path.lastIndexOf('/') + 1);
+            var baseName = fileName.replace(/\.[^/.]+$/, '');
+            var niceTitle = baseName.replace(/_/g, ' ').replace(/-/g, ' ');
+
+            var h1 = document.getElementById('blog-title');
+            if (h1) {
+                h1.textContent = niceTitle;
+            }
+            document.title = niceTitle + ' - GARUNA SITE';
+        })();
+    </script>
+</body>
+</html>

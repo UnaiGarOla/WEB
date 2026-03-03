@@ -29,6 +29,15 @@ document.addEventListener('DOMContentLoaded', function () {
             z-index: 1001;
         }
 
+        .site-logo {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            height: 80px;
+            width: auto;
+            z-index: 1001;
+        }
+
         /* Menú lateral que entra desde la izquierda */
         .menu {
             position: fixed;
@@ -49,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
             transform: translateX(0);
         }
 
-        .menu a {
+        .menu a, .menu button, .menu select {
             display: block;
             margin: 5px 0;
             text-decoration: none;
@@ -57,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
             font-family: Arial, sans-serif;
         }
 
-        .menu a:hover {
+        .menu a:hover, .menu button:hover {
             text-decoration: underline;
         }
     `;
@@ -73,24 +82,123 @@ document.addEventListener('DOMContentLoaded', function () {
     menu.id = 'menu';
     menu.className = 'menu';
 
+    // Logo arriba a la derecha (se muestra en TODAS las páginas que cargan este menú)
+    var logo = document.createElement('img');
+    logo.src = (function () {
+        var path = window.location.pathname.replace(/\\/g, '/');
+        var inBlogsDir = path.indexOf('/blogs/') !== -1;
+        return inBlogsDir ? '../media/logo.jpg' : 'media/logo.jpg';
+    })();
+    logo.alt = 'GARUNA SITE logo';
+    logo.className = 'site-logo';
+
+    // Prefijo según dónde estemos (raíz o carpeta blogs/)
+    var currentPath = window.location.pathname.replace(/\\/g, '/');
+    var inBlogsDir = currentPath.indexOf('/blogs/') !== -1;
+    var basePrefix = inBlogsDir ? '../' : '';
+
+    // Enlaces de menú con IDs lógicos para poder traducirlos
     var items = [
-        { href: 'index.html', text: 'Inicio' },
-        { href: '#sobre-mi', text: 'Sobre mí' },
-        { href: 'blogs.html', text: 'Blogs' }
+        { id: 'home',   href: basePrefix + 'index.html' },
+        { id: 'blogs',  href: basePrefix + 'blogs.html' }
     ];
+
+    var menuLinks = {};
 
     items.forEach(function (item) {
         var link = document.createElement('a');
         link.href = item.href;
-        link.textContent = item.text;
         menu.appendChild(link);
+        menuLinks[item.id] = link;
     });
+
+    // Selector de idioma (desplegable)
+    var langSelect = document.createElement('select');
+    langSelect.id = 'language-select';
+    langSelect.style.marginTop = '15px';
+
+    var langs = [
+        { code: 'eu', label: 'Euskara' },
+        { code: 'es', label: 'Español' },
+        { code: 'en', label: 'English' }
+    ];
+
+    langs.forEach(function (l) {
+        var opt = document.createElement('option');
+        opt.value = l.code;
+        opt.textContent = l.label;
+        langSelect.appendChild(opt);
+    });
+
+    menu.appendChild(langSelect);
 
     // Insertar en el body al principio
     document.body.insertBefore(toggleButton, document.body.firstChild);
-    document.body.insertBefore(menu, toggleButton.nextSibling);
+    document.body.insertBefore(logo, toggleButton.nextSibling);
+    document.body.insertBefore(menu, logo.nextSibling);
 
-    // 3. Comportamiento del menú
+    // 3. Traducciones de los textos comunes (menú + textos intro)
+    var translations = {
+        eu: {
+            menu: {
+                home: 'Hasiera',
+                blogs: 'Blogak',
+                language: 'Hizkuntza'
+            },
+            indexIntro: 'Ongietorri nire orrira. Hemen eduki interesgarria erakutsiko dut.'
+        },
+        es: {
+            menu: {
+                home: 'Inicio',
+                blogs: 'Blogs',
+                language: 'Idioma'
+            },
+            indexIntro: 'Bienvenido a mi página. Aquí iré mostrando información y contenido interesante.'
+        },
+        en: {
+            menu: {
+                home: 'Home',
+                blogs: 'Blogs',
+                language: 'Language'
+            },
+            indexIntro: 'Welcome to my page. I will show information and interesting content here.'
+        }
+    };
+
+    // Idioma actual: por defecto euskera, pero se respeta lo guardado
+    var currentLang = 'eu';
+
+    var storedLang = null;
+    try {
+        storedLang = window.localStorage.getItem('garuna_lang');
+    } catch (e) {}
+    if (storedLang && translations[storedLang]) {
+        currentLang = storedLang;
+    }
+
+    function applyTranslations(lang) {
+        var t = translations[lang] || translations.es;
+
+        if (menuLinks.home)  menuLinks.home.textContent  = t.menu.home;
+        if (menuLinks.blogs) menuLinks.blogs.textContent = t.menu.blogs;
+
+        // Actualizar valor seleccionado en el desplegable
+        if (langSelect && langSelect.value !== lang) {
+            langSelect.value = lang;
+        }
+/*en Index.html traduce el idioma de la página*/ 
+        var path = window.location.pathname;
+
+        if (path.endsWith('index.html') || path === '/' ) {
+            var introP = document.querySelector('.contenido p');
+            if (introP && t.indexIntro) {
+                introP.textContent = t.indexIntro;
+            }
+        }
+        
+    }
+
+    // 4. Comportamiento del menú
     function openMenu() {
         document.body.classList.add('menu-open');
         menu.classList.add('open');
@@ -119,4 +227,52 @@ document.addEventListener('DOMContentLoaded', function () {
             closeMenu();
         });
     });
+
+    // Función para navegar a la versión de idioma del archivo actual
+    function navigateToLanguageVersion(lang) {
+        // Mapear eu/es/en -> sufijos de archivo
+        var suffixMap = { eu: 'eus', es: 'es', en: 'eng' };
+        var suf = suffixMap[lang] || 'es';
+
+        var path = window.location.pathname;          // /.../Irati_es.html
+        var parts = path.split('/');
+        var file = parts.pop() || 'index.html';
+
+        // nombre_base[_idioma].html
+        var match = file.match(/^(.+?)(?:_(eus|es|eng))?(\.html)?$/i);
+        if (!match) {
+            return;
+        }
+
+        var base = match[1];
+        var ext = match[3] || '.html';
+
+        // Para la página principal (index) NO cambiamos de archivo,
+        // solo se traducen textos con applyTranslations.
+        if (base.toLowerCase() === 'index') {
+            return;
+        }
+
+        var newFile = base + '_' + suf + ext;         // Irati_eus.html, blogs_eng.html, etc.
+
+        parts.push(newFile);
+        var newPath = parts.join('/');
+
+        if (newPath !== path) {
+            window.location.href = newPath;
+        }
+    }
+
+    // 5. Comportamiento del selector de idioma
+    langSelect.addEventListener('change', function () {
+        currentLang = langSelect.value;
+        try {
+            window.localStorage.setItem('garuna_lang', currentLang);
+        } catch (e) {}
+        applyTranslations(currentLang);
+        navigateToLanguageVersion(currentLang);
+    });
+
+    // Aplicar idioma inicial
+    applyTranslations(currentLang);
 });

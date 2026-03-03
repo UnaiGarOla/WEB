@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>GARUNA SITE - Blog</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #e0e0e0;
+            padding-top: 40px;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+        }
+
+        .contenido {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .foto-articulo {
+            width: 80%;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        figure {
+            margin: 30px 0;
+            text-align: center; /* center image + text */
+        }
+
+        figcaption {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 id="blog-title">Blog</h1>
+    </div>
+
+    <div class="contenido">
+        <h1>Desfiladero de la Hermida and surroundings of Potes</h1>
+
+        <p>
+            This weekend we explored the Desfiladero de la Hermida, near the charming town of Potes. 
+            The gorge is impressive, a winding road between mountains, with nearly vertical walls 
+            and the river below. From the first moment, you realize you are in a special place: 
+            wild nature, silence, and breathtaking landscapes.
+        </p>
+        <figure>
+            <img class="foto-articulo" src="../media/blogs/Potes/1.jpg" alt="Potes">
+            <figcaption>The old bridge of Potes town.</figcaption>
+        </figure>
+
+        <p>
+            Potes itself is a very picturesque town, with stone houses, old bridges, 
+            and a calm atmosphere among the mountains. Perfect for walking and disconnecting.
+        </p>
+
+        <h2>Our plan</h2>
+
+        <h3>Saturday</h3>
+
+        <p>
+            First, we visited Potes. We strolled slowly through the streets, took some photos 
+            (impossible not to) and enjoyed the atmosphere.
+        </p>
+        <figure>
+            <img class="foto-articulo" src="../media/blogs/Potes/3.jpg" alt="Potes">
+            <figcaption>Potes in the afternoon.</figcaption>
+        </figure>
+        <p>
+            In the afternoon, we went to the Balneario de la Hermida. The place is beautiful, 
+            but what really makes it special is the absolute pleasure of the hot water pools, 
+            with incredible views outside. Immersed in warm water surrounded by mountains, 
+            you are left speechless. Moments like this make you think: 
+            <em>“This is what life is all about!”</em>
+        </p>
+
+        <p>
+            In the evening, we had dinner at <a href="https://maps.app.goo.gl/dpar3228vb8X8yg97" target="_blank">La Juana</a> restaurant. We ate a large cachopo 
+            accompanied by the local croquettes. After a day like that, a hearty dinner fits perfectly. Delicious!
+        </p>
+
+        <h3>Sunday</h3>
+
+        <p>
+            A bit of adventure: we did the Via Ferrata de Camaleño. An unforgettable experience. 
+            We even crossed a K3-level bridge, which is tense for a moment… 
+            but at the same time gives immense satisfaction. The views from above are absolutely worth it.
+        </p>
+        <figure>
+            <img class="foto-articulo" src="../media/blogs/Potes/2.jpg" alt="Via Ferrata">
+            <figcaption>Via Ferrata de Camaleño.</figcaption>
+        </figure>
+
+        <p>
+            Afterwards, we visited Mogrovejo, the town where Heidi was filmed. 
+            A small and charming place, surrounded by mountains, straight out of a storybook.
+        </p>
+
+        <p>
+            To wrap up the weekend, we had lunch at the Merendero de Los Llanos. 
+            Outdoors, relaxed, a perfect way to end the weekend.
+        </p>
+
+        <p class="cierre">
+            A simple weekend, but with a perfect plan: nature, tranquility, 
+            a little adventure, and good food. <strong>What more could you ask for?</strong>
+        </p>
+    </div>
+
+    <script src="../program files/index/menu.js"></script>
+    <script>
+        (function () {
+            var path = window.location.pathname;
+            var fileName = path.substring(path.lastIndexOf('/') + 1);
+            var baseName = fileName.replace(/\.[^/.]+$/, '');
+            var niceTitle = baseName.replace(/_/g, ' ').replace(/-/g, ' ');
+
+            var h1 = document.getElementById('blog-title');
+            if (h1) {
+                h1.textContent = niceTitle;
+            }
+            document.title = niceTitle + ' - GARUNA SITE';
+        })();
+    </script>
+</body>
+</html>
