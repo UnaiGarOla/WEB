@@ -45,11 +45,11 @@
 </head>
 <body>
     <div class="header">
-        <h1 id="blog-title">Blog</h1>
+        <h1>Desfiladero de la Hermida and surroundings of Potes</h1>
     </div>
 
     <div class="contenido">
-        <h1>Desfiladero de la Hermida and surroundings of Potes</h1>
+      
 
         <p>
             This weekend we explored the Desfiladero de la Hermida, near the charming town of Potes. 
@@ -95,23 +95,9 @@
         <h3>Sunday</h3>
 
         <p>
-            A bit of adventure: we did the Via Ferrata de Camaleño. An unforgettable experience. 
+            A bit of adventure: we did the <a href ="https://maps.app.goo.gl/QeFqkQPbA44XfReX7" target="_blank">Via Ferrata de Camaleño</a>. An unforgettable experience. 
             We even crossed a K3-level bridge, which is tense for a moment… 
             but at the same time gives immense satisfaction. The views from above are absolutely worth it.
-        </p>
-        <figure>
-            <img class="foto-articulo" src="../media/blogs/Potes/2.jpg" alt="Via Ferrata">
-            <figcaption>Via Ferrata de Camaleño.</figcaption>
-        </figure>
-
-        <p>
-            Afterwards, we visited Mogrovejo, the town where Heidi was filmed. 
-            A small and charming place, surrounded by mountains, straight out of a storybook.
-        </p>
-
-        <p>
-            To wrap up the weekend, we had lunch at the Merendero de Los Llanos. 
-            Outdoors, relaxed, a perfect way to end the weekend.
         </p>
 
         <p class="cierre">
@@ -128,10 +114,6 @@
             var baseName = fileName.replace(/\.[^/.]+$/, '');
             var niceTitle = baseName.replace(/_/g, ' ').replace(/-/g, ' ');
 
-            var h1 = document.getElementById('blog-title');
-            if (h1) {
-                h1.textContent = niceTitle;
-            }
             document.title = niceTitle + ' - GARUNA SITE';
         })();
     </script>

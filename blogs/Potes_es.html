@@ -45,11 +45,11 @@
 </head>
 <body>
     <div class="header">
-        <h1 id="blog-title">Blog</h1>
+        <h1>Desfiladero de la Hermida y alrededores de Potes</h1>
     </div>
 
     <div class="contenido">
-        <h1>Desfiladero de la Hermida y alrededores de Potes</h1>
+       
 
         <p>
             Este fin de semana estuvimos por el Desfiladero de la Hermida, cerca del encantador pueblo de Potes. 
@@ -93,7 +93,7 @@
         <h3>Domingo</h3>
 
         <p>
-            Un poco de aventura: hicimos la Vía Ferrata de Camaleño. Una experiencia inigualable. 
+            Un poco de aventura: hicimos la <a href ="https://maps.app.goo.gl/QeFqkQPbA44XfReX7" target="_blank">Via Ferrata de Camaleño</a>. Una experiencia inigualable. 
             Incluso pasamos por un puente de nivel K3, donde se siente tensión por un momento… 
             pero al mismo tiempo una satisfacción enorme. Las vistas desde la altura valen totalmente la pena.
         </p>
@@ -126,10 +126,7 @@
             var baseName = fileName.replace(/\.[^/.]+$/, '');
             var niceTitle = baseName.replace(/_/g, ' ').replace(/-/g, ' ');
 
-            var h1 = document.getElementById('blog-title');
-            if (h1) {
-                h1.textContent = niceTitle;
-            }
+           
             document.title = niceTitle + ' - GARUNA SITE';
         })();
     </script>
