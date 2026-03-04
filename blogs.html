@@ -21,10 +21,18 @@
         }
 
         .contenido {
-            max-width: 800px;
-            margin: 30px auto;
-            text-align: center;
-            padding: 0 20px;
+            width: 100%;           /* Se expande en móviles */
+            max-width: 800px;      /* Se detiene en ordenadores */
+            margin: 2rem auto;     /* Espaciado más moderno */
+            padding: 0 1.5rem;     /* Un poco más de aire en los lados */
+            box-sizing: border-box; 
+            text-wrap: pretty;     /* Evita palabras sueltas al final (en navegadores modernos) */
+        }
+
+        @media (max-width: 480px) {
+            .contenido {
+                margin: 1rem auto; /* Menos espacio arriba/abajo en móviles pequeños */
+            }
         }
     </style>
 </head>
@@ -34,17 +42,15 @@
     </div>
 
     <div class="contenido">
-        <p>
-            Esta es la página de blogs. Selecciona una entrada para leerla.
-        </p>
+        
 
         <div class="blog-list" id="blog-list">
             <!-- La lista de blogs se rellena con JavaScript -->
         </div>
     </div>
 
-    <script src="program files/index/menu.js"></script>
-    <script src="program files/blogs/blogs.js"></script>
+    <script src="program_files/index/menu.js"></script>
+    <script src="program_files/blogs/blogs.js"></script>
 </body>
 </html>
 

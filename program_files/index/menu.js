@@ -185,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (menuLinks.home)  menuLinks.home.textContent  = t.menu.home;
         if (menuLinks.blogs) menuLinks.blogs.textContent = t.menu.blogs;
+        if (menuLinks.galeria) menuLinks.galeria.textContent = t.menu.galeria;
 
         // Actualizar valor seleccionado en el desplegable
         if (langSelect && langSelect.value !== lang) {
@@ -237,36 +238,33 @@ document.addEventListener('DOMContentLoaded', function () {
         // Mapear eu/es/en -> sufijos de archivo
         var suffixMap = { eu: 'eus', es: 'es', en: 'eng' };
         var suf = suffixMap[lang] || 'es';
-
-        var path = window.location.pathname;          // /.../Irati_es.html
+    
+        var path = window.location.pathname;          // /.../blogs.html
         var parts = path.split('/');
         var file = parts.pop() || 'index.html';
-
-        // nombre_base[_idioma].html
+    
+        // Separar base, sufijo actual y extensión
         var match = file.match(/^(.+?)(?:_(eus|es|eng))?(\.html)?$/i);
-        if (!match) {
-            return;
-        }
-
+        if (!match) return;
+    
         var base = match[1];
         var ext = match[3] || '.html';
-
-        // Para la página principal (index) y la galeria NO cambiamos de archivo,
-        // solo se traducen textos con applyTranslations.
-        if (base.toLowerCase() === 'index' || base.toLowerCase() === 'galeria') {
+    
+        // Si es index o galeria, NO cambiamos de archivo
+        if (base.toLowerCase() === 'index' || base.toLowerCase() === 'galeria'|| base.toLowerCase() === 'blogs') {
             return;
         }
-
-        var newFile = base + '_' + suf + ext;         // Irati_eus.html, blogs_eng.html, etc.
-
-        parts.push(newFile);
-        var newPath = parts.join('/');
-
-        if (newPath !== path) {
+    
+        // Construir el nuevo nombre de archivo con sufijo del idioma
+        var newFile = base + '_' + suf + ext;
+    
+        // Evitar recargar si ya estamos en el archivo correcto
+        if (file.toLowerCase() !== newFile.toLowerCase()) {
+            parts.push(newFile);
+            var newPath = parts.join('/');
             window.location.href = newPath;
         }
     }
-
     // 5. Comportamiento del selector de idioma
     langSelect.addEventListener('change', function () {
         currentLang = langSelect.value;

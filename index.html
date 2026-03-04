@@ -1,48 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GARUNA SITE</title>
     <style>
         body {
-            margin: 0; /* para que el fondo llegue de lado a lado */
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
         }
 
-        /* Franja gris desde el tope hasta debajo del título */
+        /* HEADER */
         .header {
             background-color: #e0e0e0;
-            padding-top: 40px;  /* separa el título del borde superior */
-            padding-bottom: 20px;
-        }
-
-        /* Título dentro de la franja gris */
-        h1 {
+            padding: 50px 20px;
             text-align: center;
-            margin: 0;          /* sin margen extra, lo controla .header */
         }
 
-        /* Contenedor del texto (y donde luego se añaden las imágenes) debajo del título */
+        /* 1. SLIDESHOW: ANCHO (Para PC) */
+        .slideshow-container {
+            width: 100%;
+            max-width: 1400px; 
+            margin: 20px auto;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .slideshow {
+            width: 100%;
+            background-color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            /* PROPORCIÓN PC: Muy apaisada */
+            aspect-ratio: 16 / 9; 
+            display: flex;
+        }
+
+        .slideshow img {
+            width: 100%;
+            height: 100%;
+            /* ESTO ES CLAVE: evita que la imagen se estire feo, 
+               la recorta para que rellene el hueco manteniendo su forma */
+            object-fit: cover; 
+            display: block;
+        }
+
+        /* 2. CONTENIDO: ESTRECHO (Para PC) */
         .contenido {
-            max-width: 1800px;
-            margin: 30px auto;
-            text-align: center;
+            width: 100%;
+            max-width: 850px;
+            margin: 40px auto;
             padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        /* AJUSTES PARA MÓVIL */
+        @media (max-width: 768px) {
+            .slideshow-container {
+                padding: 0;    /* Sin márgenes laterales para aprovechar espacio */
+                margin-top: 0;
+            }
+
+            .slideshow {
+                border-radius: 0;
+                /* CAMBIAMOS LA PROPORCIÓN EN MÓVIL: 
+                   4/3 es más alto y evita el efecto 'estirado' */
+                aspect-ratio: 4 / 3; 
+            }
+
+            .contenido {
+                margin-top: 20px;
+                padding: 0 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
+
+    <header class="header">
         <h1 id="inicio">GARUNA SITE</h1>
-    </div>
+    </header>
 
-    <div class="contenido">
+    <section class="slideshow-container">
+        <div class="slideshow" 
+             data-base="media/index/foto" 
+             data-ext=".jpg" 
+             data-total="5">
+             </div>
+    </section>
+    
+    <main class="contenido">
         <p>
-            Bienvenido a mi página. Aquí iré mostrando información y contenido interesante.
+            El slider ahora cambia su forma en móvil para no verse como una tira delgada.
         </p>
-    </div>
+        <div class="blog-list" id="blog-list"></div>
+    </main>
 
-    <script src="program files/index/menu.js"></script>
-    <script src="program files/index/picture slide.js"></script>
+    <script src="program_files/index/menu.js"></script>
+    <script src="program_files/index/picture_slide.js"></script>
+    <script src="program_files/blogs/blogs.js"></script>
+
 </body>
 </html>
