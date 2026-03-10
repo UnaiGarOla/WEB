@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GARUNA SITE - Blog</title>
     <style>
         body {
@@ -21,19 +22,32 @@
         }
 
         .contenido {
+            width: 100%;
             max-width: 800px;
+            /* Mantiene el texto legible en PC */
             margin: 30px auto;
             padding: 0 20px;
+            box-sizing: border-box;
         }
+
         .foto-articulo {
-            width: 80%;
+            width: 100%;
+            /* Que ocupe todo el ancho de su contenedor */
+            max-width: 100%;
+            /* Evita que se salga */
+            height: auto;
+            aspect-ratio: 16 / 9;
+            /* Proporción fija para que todas se vean iguales */
+            object-fit: cover;
+            /* Recorta la imagen para llenar el espacio sin deformarse */
             border-radius: 12px;
-            margin: 20px 0;
+            display: block;
         }
 
         figure {
             margin: 30px 0;
-            text-align: center; /* centra imagen + texto */
+            text-align: center;
+            /* center image + text */
         }
 
         figcaption {
@@ -41,90 +55,108 @@
             color: #666;
             margin-top: 10px;
         }
+
+        /* AJUSTES PARA MÓVIL */
+        @media (max-width: 768px) {
+            .contenido {
+                padding: 0 15px;
+                margin: 20px auto;
+            }
+
+            .foto-articulo {
+                border-radius: 8px;
+                /* Bordes un poco más suaves en móvil */
+                aspect-ratio: 4 / 3;
+                /* Más cuadrada en móvil para que se vea mejor el detalle */
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="header">
         <h1>Desfiladero de la Hermida eta Potes ingurua</h1>
     </div>
 
     <div class="contenido">
-        
 
-    <p>
-        Asteburu honetan Desfiladero de la Hermida inguruan egon gara, 
-        Potes herri politaren bueltan. Hermidako arroila ikusgarria da, 
-        mendi artean zabaltzen den errepide bihurri horietakoa, paretak ia bertikalak 
-        eta ibaia behean lagun. Lehen momentutik ohartzen zara leku berezi batean zaudela: 
-        natura basatia, isiltasuna eta paisaia indartsuak.
-    </p>
-    <figure>
-        <img class="foto-articulo" src="../media/blogs/Potes/1.jpg" alt="Potes herria">
-        <figcaption>Potes herriaren zubi zaharra.</figcaption>
-    </figure>
-    <p>
-        Potes bera ere oso herri xarmangarria da, harrizko etxeak, zubi zaharrak 
-        eta mendien artean kokatutako giro lasaia. Paseatzeko eta deskonektatzeko 
-        leku aproposa.
-    </p>
 
-    <h2>Gure plana</h2>
+        <p>
+            Asteburu honetan Desfiladero de la Hermida inguruan egon gara,
+            Potes herri politaren bueltan. Hermidako arroila ikusgarria da,
+            mendi artean zabaltzen den errepide bihurri horietakoa, paretak ia bertikalak
+            eta ibaia behean lagun. Lehen momentutik ohartzen zara leku berezi batean zaudela:
+            natura basatia, isiltasuna eta paisaia indartsuak.
+        </p>
+        <figure>
+            <img class="foto-articulo" src="../media/blogs/Potes/1.jpg" alt="Potes herria">
+            <figcaption>Potes herriaren zubi zaharra.</figcaption>
+        </figure>
+        <p>
+            Potes bera ere oso herri xarmangarria da, harrizko etxeak, zubi zaharrak
+            eta mendien artean kokatutako giro lasaia. Paseatzeko eta deskonektatzeko
+            leku aproposa.
+        </p>
 
-    <h3>Larunbata</h3>
+        <h2>Gure plana</h2>
 
-    <p>
-        Lehenengo Potes bisitatu genuen. Lasai-lasai ibili ginen kaleetan, 
-        argazki batzuk atera (ezinezkoa ez ateratzea horrelako leku batean) 
-        eta giroaz gozatu.
-    </p>
-    <figure>
-        <img class="foto-articulo" src="../media/blogs/Potes/3.jpg" alt="Potes herria">
-        <figcaption>Potes herriaren arratsaldean.</figcaption>
-    </figure>
-    <p>
-        Arratsaldean Balneario de la Hermida-ra joan ginen. Oso leku polita da, 
-        baina benetan berezia egiten duena da pistinako ur beroen plazer absolutua, 
-        kanpoan dituzun bistak ikaragarriak diren bitartean. Ur beroan sartuta, 
-        mendi artean, ia hitzik gabe geratzen zara. Momentu horietako bat da 
-        <em>“hau bai bizitza”</em> pentsatzen duzuna.
-    </p>
+        <h3>Larunbata</h3>
 
-    <p>
-        Gauean afaltzera joan ginen <a href="https://maps.app.goo.gl/dpar3228vb8X8yg97" target="_blank">La Juana</a> jatetxera. Katxopo handi bat jan genuen, 
-        bertako kroketekin lagunduta. Egia esan, horrelako plan baten ondoren, 
-        halako afari sendoa primeran sartzen da. Gozo-gozo jan genuen.
-    </p>
+        <p>
+            Lehenengo Potes bisitatu genuen. Lasai-lasai ibili ginen kaleetan,
+            argazki batzuk atera (ezinezkoa ez ateratzea horrelako leku batean)
+            eta giroaz gozatu.
+        </p>
+        <figure>
+            <img class="foto-articulo" src="../media/blogs/Potes/3.jpg" alt="Potes herria">
+            <figcaption>Potes herriaren arratsaldean.</figcaption>
+        </figure>
+        <p>
+            Arratsaldean Balneario de la Hermida-ra joan ginen. Oso leku polita da,
+            baina benetan berezia egiten duena da pistinako ur beroen plazer absolutua,
+            kanpoan dituzun bistak ikaragarriak diren bitartean. Ur beroan sartuta,
+            mendi artean, ia hitzik gabe geratzen zara. Momentu horietako bat da
+            <em>“hau bai bizitza”</em> pentsatzen duzuna.
+        </p>
 
-    <h3>Igandea</h3>
+        <p>
+            Gauean afaltzera joan ginen <a href="https://maps.app.goo.gl/dpar3228vb8X8yg97" target="_blank">La Juana</a>
+            jatetxera. Katxopo handi bat jan genuen,
+            bertako kroketekin lagunduta. Egia esan, horrelako plan baten ondoren,
+            halako afari sendoa primeran sartzen da. Gozo-gozo jan genuen.
+        </p>
 
-    <p>
-        Abentura pixka bat: <a href ="https://maps.app.goo.gl/QeFqkQPbA44XfReX7" target="_blank">Via Ferrata de Camaleño</a> egin genuen. Esperientzia 
-        paregabea izan zen. K3 mailako zubia ere egin genuen, eta momentu batean 
-        tentsio puntu hori sentitzen da… baina aldi berean sekulako satisfazioa 
-        ematen du. Altueratik ikusitako paisaiak ere merezi du.
-    </p>
-    <figure>
-        <img class="foto-articulo" src="../media/blogs/Potes/2.jpg" alt="Potes herria">
-        <figcaption>Via Ferrata de Camaleño.</figcaption>
-    </figure>
-    <p>
-        Ondoren Mogrovejo bisitatu genuen, Heidi grabatu zen herria. 
-        Oso herri txikia eta polita da, mendiz inguratutakoa, 
-        ipuin batekoa dirudi.
-    </p>
+        <h3>Igandea</h3>
 
-    <p>
-        Eta asteburua borobiltzeko, bazkaria Merendero de Los Llanos-en. 
-        Aire librean, lasai, asteburuari amaiera emateko modu ezin hobea.
-    </p>
+        <p>
+            Abentura pixka bat: <a href="https://maps.app.goo.gl/QeFqkQPbA44XfReX7" target="_blank">Via Ferrata de
+                Camaleño</a> egin genuen. Esperientzia
+            paregabea izan zen. K3 mailako zubia ere egin genuen, eta momentu batean
+            tentsio puntu hori sentitzen da… baina aldi berean sekulako satisfazioa
+            ematen du. Altueratik ikusitako paisaiak ere merezi du.
+        </p>
+        <figure>
+            <img class="foto-articulo" src="../media/blogs/Potes/2.jpg" alt="Potes herria">
+            <figcaption>Via Ferrata de Camaleño.</figcaption>
+        </figure>
+        <p>
+            Ondoren Mogrovejo bisitatu genuen, Heidi grabatu zen herria.
+            Oso herri txikia eta polita da, mendiz inguratutakoa,
+            ipuin batekoa dirudi.
+        </p>
 
-    <p class="cierre">
-        Asteburu sinplea, baina plan perfektuarekin: natura, lasaitasuna, 
-        abentura pixka bat eta janari ona. <strong>Zer gehiago behar da?</strong>
-    </p>
- </div>
+        <p>
+            Eta asteburua borobiltzeko, bazkaria Merendero de Los Llanos-en.
+            Aire librean, lasai, asteburuari amaiera emateko modu ezin hobea.
+        </p>
 
- <script src="../program_files/index/menu.js"></script>
+        <p class="cierre">
+            Asteburu sinplea, baina plan perfektuarekin: natura, lasaitasuna,
+            abentura pixka bat eta janari ona. <strong>Zer gehiago behar da?</strong>
+        </p>
+    </div>
+
+    <script src="../program_files/index/menu.js"></script>
     <script>
         (function () {
             var path = window.location.pathname;
@@ -132,10 +164,10 @@
             var baseName = fileName.replace(/\.[^/.]+$/, '');
             var niceTitle = baseName.replace(/_/g, ' ').replace(/-/g, ' ');
 
-         
+
             document.title = niceTitle + ' - GARUNA SITE';
         })();
     </script>
 </body>
-</html>
 
+</html>

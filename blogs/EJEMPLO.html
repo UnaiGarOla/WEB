@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GARUNA SITE - Blog</title>
     <style>
         body {
@@ -21,12 +22,57 @@
         }
 
         .contenido {
+            width: 100%;
             max-width: 800px;
+            /* Mantiene el texto legible en PC */
             margin: 30px auto;
             padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .foto-articulo {
+            width: 100%;
+            /* Que ocupe todo el ancho de su contenedor */
+            max-width: 100%;
+            /* Evita que se salga */
+            height: auto;
+            aspect-ratio: 16 / 9;
+            /* Proporción fija para que todas se vean iguales */
+            object-fit: cover;
+            /* Recorta la imagen para llenar el espacio sin deformarse */
+            border-radius: 12px;
+            display: block;
+        }
+
+        figure {
+            margin: 30px 0;
+            text-align: center;
+            /* center image + text */
+        }
+
+        figcaption {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* AJUSTES PARA MÓVIL */
+        @media (max-width: 768px) {
+            .contenido {
+                padding: 0 15px;
+                margin: 20px auto;
+            }
+
+            .foto-articulo {
+                border-radius: 8px;
+                /* Bordes un poco más suaves en móvil */
+                aspect-ratio: 4 / 3;
+                /* Más cuadrada en móvil para que se vea mejor el detalle */
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="header">
         <h1 id="blog-title">Blog</h1>
@@ -56,4 +102,5 @@
         })();
     </script>
 </body>
+
 </html>

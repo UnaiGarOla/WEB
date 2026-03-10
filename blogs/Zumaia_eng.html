@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GARUNA SITE - Blog</title>
     <style>
         body {
@@ -21,12 +22,57 @@
         }
 
         .contenido {
+            width: 100%;
             max-width: 800px;
+            /* Mantiene el texto legible en PC */
             margin: 30px auto;
             padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .foto-articulo {
+            width: 100%;
+            /* Que ocupe todo el ancho de su contenedor */
+            max-width: 100%;
+            /* Evita que se salga */
+            height: auto;
+            aspect-ratio: 16 / 9;
+            /* Proporción fija para que todas se vean iguales */
+            object-fit: cover;
+            /* Recorta la imagen para llenar el espacio sin deformarse */
+            border-radius: 12px;
+            display: block;
+        }
+
+        figure {
+            margin: 30px 0;
+            text-align: center;
+            /* center image + text */
+        }
+
+        figcaption {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* AJUSTES PARA MÓVIL */
+        @media (max-width: 768px) {
+            .contenido {
+                padding: 0 15px;
+                margin: 20px auto;
+            }
+
+            .foto-articulo {
+                border-radius: 8px;
+                /* Bordes un poco más suaves en móvil */
+                aspect-ratio: 4 / 3;
+                /* Más cuadrada en móvil para que se vea mejor el detalle */
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="header">
         <h1 id="blog-title">Blog</h1>
@@ -35,39 +81,50 @@
     <div class="contenido">
         <header>
             <h2 style="color: #2c3e50;">🌊 Zumaia: An Amazing Journey to the Heart of the Earth</h2>
-            <p><em>If there is a place where time has been carved into stone, that place is <strong>Zumaia</strong>.</em></p>
+            <p><em>If there is a place where time has been carved into stone, that place is
+                    <strong>Zumaia</strong>.</em></p>
         </header>
-    
+
         <section>
-            <p>You don't need to be a geologist to stand in awe of the <strong>Flysch</strong>—rock formations that look like the pages of a giant book telling our planet's history over 60 million years.</p>
+            <p>You don't need to be a geologist to stand in awe of the <strong>Flysch</strong>—rock formations that look
+                like the pages of a giant book telling our planet's history over 60 million years.</p>
         </section>
-    
+
         <hr>
-    
+
         <section>
             <h3 style="color: #2980b9;">🥾 Walking Through History</h3>
-            <p>Our journey begins at the <strong>San Telmo</strong> chapel, literally hanging over the cliffside. From there, the path winds along the coast, offering breathtaking views at every turn.</p>
-            
+            <p>Our journey begins at the <strong>San Telmo</strong> chapel, literally hanging over the cliffside. From
+                there, the path winds along the coast, offering breathtaking views at every turn.</p>
+
             <p>Walking along the Flysch is an almost mystical experience:</p>
             <ul>
                 <li><strong>The Sound:</strong> The roar of the Cantabrian Sea crashing against the stone layers.</li>
-                <li><strong>The Texture:</strong> The contrast between the lush green Basque meadows and the grey rock strata plunging into the sea.</li>
-                <li><strong>The Wonder:</strong> Knowing you are stepping on the very sediments that marked events like the extinction of the dinosaurs.</li>
+                <li><strong>The Texture:</strong> The contrast between the lush green Basque meadows and the grey rock
+                    strata plunging into the sea.</li>
+                <li><strong>The Wonder:</strong> Knowing you are stepping on the very sediments that marked events like
+                    the extinction of the dinosaurs.</li>
             </ul>
         </section>
-    
+
         <hr>
-    
+
         <section>
             <h3 style="color: #e67e22;">🌅 The Perfect Ending: Sunset at Itzurun</h3>
-            <p>After the hike, there’s no better refuge than <strong>Itzurun Beach</strong>. It is one of Europe’s most spectacular beaches (and yes, <em>Game of Thrones</em> fans will recognize it as Dragonstone).</p>
-            
-            <p>As the sun goes down, the scene transforms. The vertical rock walls soak up orange and pink hues, while the low tide reveals the ridges of the Flysch, creating natural mirrors on the ground. Sitting on the damp sand and watching the sun disappear behind the horizon is, quite simply, <strong>the best way to end a day in the Basque Country.</strong></p>
+            <p>After the hike, there’s no better refuge than <strong>Itzurun Beach</strong>. It is one of Europe’s most
+                spectacular beaches (and yes, <em>Game of Thrones</em> fans will recognize it as Dragonstone).</p>
+
+            <p>As the sun goes down, the scene transforms. The vertical rock walls soak up orange and pink hues, while
+                the low tide reveals the ridges of the Flysch, creating natural mirrors on the ground. Sitting on the
+                damp sand and watching the sun disappear behind the horizon is, quite simply, <strong>the best way to
+                    end a day in the Basque Country.</strong></p>
         </section>
-    
+
         <footer style="margin-top: 20px;">
-            <blockquote style="background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px;">
-                <strong>Local Tip:</strong> Always check the tide charts before you go. The Flysch is best enjoyed at low tide, when its rocky "ribs" are fully exposed.
+            <blockquote
+                style="background: #f9f9f9; border-left: 10px solid #ccc; margin: 1.5em 10px; padding: 0.5em 10px;">
+                <strong>Local Tip:</strong> Always check the tide charts before you go. The Flysch is best enjoyed at
+                low tide, when its rocky "ribs" are fully exposed.
             </blockquote>
         </footer>
     </div>
@@ -84,5 +141,5 @@
         })();
     </script>
 </body>
-</html>
 
+</html>

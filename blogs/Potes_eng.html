@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GARUNA SITE - Blog</title>
     <style>
         body {
@@ -21,19 +22,32 @@
         }
 
         .contenido {
+            width: 100%;
             max-width: 800px;
+            /* Mantiene el texto legible en PC */
             margin: 30px auto;
             padding: 0 20px;
+            box-sizing: border-box;
         }
+
         .foto-articulo {
-            width: 80%;
+            width: 100%;
+            /* Que ocupe todo el ancho de su contenedor */
+            max-width: 100%;
+            /* Evita que se salga */
+            height: auto;
+            aspect-ratio: 16 / 9;
+            /* Proporción fija para que todas se vean iguales */
+            object-fit: cover;
+            /* Recorta la imagen para llenar el espacio sin deformarse */
             border-radius: 12px;
-            margin: 20px 0;
+            display: block;
         }
 
         figure {
             margin: 30px 0;
-            text-align: center; /* center image + text */
+            text-align: center;
+            /* center image + text */
         }
 
         figcaption {
@@ -41,20 +55,36 @@
             color: #666;
             margin-top: 10px;
         }
+
+        /* AJUSTES PARA MÓVIL */
+        @media (max-width: 768px) {
+            .contenido {
+                padding: 0 15px;
+                margin: 20px auto;
+            }
+
+            .foto-articulo {
+                border-radius: 8px;
+                /* Bordes un poco más suaves en móvil */
+                aspect-ratio: 4 / 3;
+                /* Más cuadrada en móvil para que se vea mejor el detalle */
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="header">
         <h1>Desfiladero de la Hermida and surroundings of Potes</h1>
     </div>
 
     <div class="contenido">
-      
+
 
         <p>
-            This weekend we explored the Desfiladero de la Hermida, near the charming town of Potes. 
-            The gorge is impressive, a winding road between mountains, with nearly vertical walls 
-            and the river below. From the first moment, you realize you are in a special place: 
+            This weekend we explored the Desfiladero de la Hermida, near the charming town of Potes.
+            The gorge is impressive, a winding road between mountains, with nearly vertical walls
+            and the river below. From the first moment, you realize you are in a special place:
             wild nature, silence, and breathtaking landscapes.
         </p>
         <figure>
@@ -63,7 +93,7 @@
         </figure>
 
         <p>
-            Potes itself is a very picturesque town, with stone houses, old bridges, 
+            Potes itself is a very picturesque town, with stone houses, old bridges,
             and a calm atmosphere among the mountains. Perfect for walking and disconnecting.
         </p>
 
@@ -72,7 +102,7 @@
         <h3>Saturday</h3>
 
         <p>
-            First, we visited Potes. We strolled slowly through the streets, took some photos 
+            First, we visited Potes. We strolled slowly through the streets, took some photos
             (impossible not to) and enjoyed the atmosphere.
         </p>
         <figure>
@@ -80,28 +110,30 @@
             <figcaption>Potes in the afternoon.</figcaption>
         </figure>
         <p>
-            In the afternoon, we went to the Balneario de la Hermida. The place is beautiful, 
-            but what really makes it special is the absolute pleasure of the hot water pools, 
-            with incredible views outside. Immersed in warm water surrounded by mountains, 
-            you are left speechless. Moments like this make you think: 
+            In the afternoon, we went to the Balneario de la Hermida. The place is beautiful,
+            but what really makes it special is the absolute pleasure of the hot water pools,
+            with incredible views outside. Immersed in warm water surrounded by mountains,
+            you are left speechless. Moments like this make you think:
             <em>“This is what life is all about!”</em>
         </p>
 
         <p>
-            In the evening, we had dinner at <a href="https://maps.app.goo.gl/dpar3228vb8X8yg97" target="_blank">La Juana</a> restaurant. We ate a large cachopo 
+            In the evening, we had dinner at <a href="https://maps.app.goo.gl/dpar3228vb8X8yg97" target="_blank">La
+                Juana</a> restaurant. We ate a large cachopo
             accompanied by the local croquettes. After a day like that, a hearty dinner fits perfectly. Delicious!
         </p>
 
         <h3>Sunday</h3>
 
         <p>
-            A bit of adventure: we did the <a href ="https://maps.app.goo.gl/QeFqkQPbA44XfReX7" target="_blank">Via Ferrata de Camaleño</a>. An unforgettable experience. 
-            We even crossed a K3-level bridge, which is tense for a moment… 
+            A bit of adventure: we did the <a href="https://maps.app.goo.gl/QeFqkQPbA44XfReX7" target="_blank">Via
+                Ferrata de Camaleño</a>. An unforgettable experience.
+            We even crossed a K3-level bridge, which is tense for a moment…
             but at the same time gives immense satisfaction. The views from above are absolutely worth it.
         </p>
 
         <p class="cierre">
-            A simple weekend, but with a perfect plan: nature, tranquility, 
+            A simple weekend, but with a perfect plan: nature, tranquility,
             a little adventure, and good food. <strong>What more could you ask for?</strong>
         </p>
     </div>
@@ -118,4 +150,5 @@
         })();
     </script>
 </body>
+
 </html>
