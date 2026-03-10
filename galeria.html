@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GARUNA SITE</title>
     <style>
         body {
@@ -21,7 +23,7 @@
         /* 1. SLIDESHOW: ANCHO (Para PC) */
         .slideshow-container {
             width: 100%;
-            max-width: 1400px; 
+            max-width: 1400px;
             margin: 20px auto;
             padding: 0 10px;
             box-sizing: border-box;
@@ -33,7 +35,7 @@
             border-radius: 10px;
             overflow: hidden;
             /* PROPORCIÓN PC: Muy apaisada */
-            aspect-ratio: 16 / 9; 
+            aspect-ratio: 27 / 9;
             display: flex;
         }
 
@@ -42,7 +44,7 @@
             height: 100%;
             /* ESTO ES CLAVE: evita que la imagen se estire feo, 
                la recorta para que rellene el hueco manteniendo su forma */
-            object-fit: cover; 
+            object-fit: cover;
             display: block;
         }
 
@@ -58,7 +60,8 @@
         /* AJUSTES PARA MÓVIL */
         @media (max-width: 768px) {
             .slideshow-container {
-                padding: 0;    /* Sin márgenes laterales para aprovechar espacio */
+                padding: 0;
+                /* Sin márgenes laterales para aprovechar espacio */
                 margin-top: 0;
             }
 
@@ -66,7 +69,7 @@
                 border-radius: 0;
                 /* CAMBIAMOS LA PROPORCIÓN EN MÓVIL: 
                    4/3 es más alto y evita el efecto 'estirado' */
-                aspect-ratio: 4 / 3; 
+                aspect-ratio: 1 / 1;
             }
 
             .contenido {
@@ -76,25 +79,18 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- HEADER -->
     <div class="header">
         <h1 id="inicio">GARUNA SITE</h1>
     </div>
-
+    <div class="slideshow" data-json="media/galeria/lista_fotos.json"></div>
     <!-- CONTENIDO -->
     <div class="contenido">
-
-        <!-- SLIDER: dentro del contenido -->
-        <div class="slideshow" 
-            data-base="media/galeria/foto" 
-            data-ext=".jpg" 
-            data-total="12">
-        </div>
-
         <p>
-           
+
         </p>
 
     </div>
@@ -103,7 +99,9 @@
     <script src="program_files/index/menu.js"></script>
 
     <!-- LUEGO: slider -->
+    <script src="media/galeria/lista_fotos.js"></script>
     <script src="program_files/index/picture_slide.js"></script>
 
 </body>
+
 </html>

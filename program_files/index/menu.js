@@ -29,14 +29,27 @@ document.addEventListener('DOMContentLoaded', function () {
             z-index: 1001;
         }
 
-        .site-logo {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            height: 80px;
+       .site-logo {
+            position: fixed;    
+            top: 20px;          /* Un poco más de margen en PC queda más elegante */
+            right: 20px;
+            height: 80px;       /* Tamaño grande para PC */
             width: auto;
-            z-index: 1001;
+            z-index: 0;
+            transition: all 0.3s ease; /* Para que el cambio de tamaño sea suave */
         }
+
+        /* AJUSTES PARA MÓVIL (Pantallas de menos de 768px) */
+        @media (max-width: 768px) {
+            .site-logo {
+                position: absolute;
+                top: 10px;      /* Más pegado al borde en móvil */
+                right: 10px;
+                height: 50px;   /* Más pequeño para que no tape el texto o el slider */
+                /* Opcional: si quieres que sea un poco transparente en móvil */
+                opacity: 0.9;
+            }
+        }   
 
         /* Menú lateral que entra desde la izquierda */
         .menu {
@@ -99,9 +112,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Enlaces de menú con IDs lógicos para poder traducirlos
     var items = [
-        { id: 'home',   href: basePrefix + 'index.html' },
-        { id: 'blogs',  href: basePrefix + 'blogs.html' },
-        { id: 'galeria',  href: basePrefix + 'galeria.html' }
+        { id: 'home', href: basePrefix + 'index.html' },
+        { id: 'blogs', href: basePrefix + 'blogs.html' },
+        { id: 'galeria', href: basePrefix + 'galeria.html' }
     ];
 
     var menuLinks = {};
@@ -152,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
         es: {
             menu: {
                 home: 'Inicio',
-                blogs: 'Blogs', 
+                blogs: 'Blogs',
                 galeria: 'Galeria',
                 language: 'Idioma'
             },
@@ -161,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
         en: {
             menu: {
                 home: 'Home',
-                blogs: 'Blogs', 
+                blogs: 'Blogs',
                 galeria: 'Gallery',
                 language: 'Language'
             },
@@ -175,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var storedLang = null;
     try {
         storedLang = window.localStorage.getItem('garuna_lang');
-    } catch (e) {}
+    } catch (e) { }
     if (storedLang && translations[storedLang]) {
         currentLang = storedLang;
     }
@@ -183,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function applyTranslations(lang) {
         var t = translations[lang] || translations.es;
 
-        if (menuLinks.home)  menuLinks.home.textContent  = t.menu.home;
+        if (menuLinks.home) menuLinks.home.textContent = t.menu.home;
         if (menuLinks.blogs) menuLinks.blogs.textContent = t.menu.blogs;
         if (menuLinks.galeria) menuLinks.galeria.textContent = t.menu.galeria;
 
@@ -191,16 +204,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if (langSelect && langSelect.value !== lang) {
             langSelect.value = lang;
         }
-/*en Index.html traduce el idioma de la página*/ 
+        /*en Index.html traduce el idioma de la página*/
         var path = window.location.pathname;
 
-        if (path.endsWith('index.html') || path === '/' ) {
+        if (path.endsWith('index.html') || path === '/') {
             var introP = document.querySelector('.contenido p');
             if (introP && t.indexIntro) {
                 introP.textContent = t.indexIntro;
             }
         }
-        
+
     }
 
     // 4. Comportamiento del menú
@@ -238,26 +251,26 @@ document.addEventListener('DOMContentLoaded', function () {
         // Mapear eu/es/en -> sufijos de archivo
         var suffixMap = { eu: 'eus', es: 'es', en: 'eng' };
         var suf = suffixMap[lang] || 'es';
-    
+
         var path = window.location.pathname;          // /.../blogs.html
         var parts = path.split('/');
         var file = parts.pop() || 'index.html';
-    
+
         // Separar base, sufijo actual y extensión
         var match = file.match(/^(.+?)(?:_(eus|es|eng))?(\.html)?$/i);
         if (!match) return;
-    
+
         var base = match[1];
         var ext = match[3] || '.html';
-    
+
         // Si es index o galeria, NO cambiamos de archivo
-        if (base.toLowerCase() === 'index' || base.toLowerCase() === 'galeria'|| base.toLowerCase() === 'blogs') {
+        if (base.toLowerCase() === 'index' || base.toLowerCase() === 'galeria' || base.toLowerCase() === 'blogs') {
             return;
         }
-    
+
         // Construir el nuevo nombre de archivo con sufijo del idioma
         var newFile = base + '_' + suf + ext;
-    
+
         // Evitar recargar si ya estamos en el archivo correcto
         if (file.toLowerCase() !== newFile.toLowerCase()) {
             parts.push(newFile);
@@ -270,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function () {
         currentLang = langSelect.value;
         try {
             window.localStorage.setItem('garuna_lang', currentLang);
-        } catch (e) {}
+        } catch (e) { }
         applyTranslations(currentLang);
         navigateToLanguageVersion(currentLang);
     });

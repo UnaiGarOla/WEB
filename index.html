@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@
         /* 1. SLIDESHOW: ANCHO (Para PC) */
         .slideshow-container {
             width: 100%;
-            max-width: 1400px; 
+            max-width: 1400px;
             margin: 20px auto;
             padding: 0 10px;
             box-sizing: border-box;
@@ -34,7 +35,7 @@
             border-radius: 10px;
             overflow: hidden;
             /* PROPORCIÓN PC: Muy apaisada */
-            aspect-ratio: 16 / 9; 
+            aspect-ratio: 25 / 9;
             display: flex;
         }
 
@@ -43,11 +44,11 @@
             height: 100%;
             /* ESTO ES CLAVE: evita que la imagen se estire feo, 
                la recorta para que rellene el hueco manteniendo su forma */
-            object-fit: cover; 
+            object-fit: cover;
             display: block;
         }
 
-        /* 2. CONTENIDO: ESTRECHO (Para PC) */
+        /* 2. CONTENIDO: */
         .contenido {
             width: 100%;
             max-width: 850px;
@@ -59,7 +60,8 @@
         /* AJUSTES PARA MÓVIL */
         @media (max-width: 768px) {
             .slideshow-container {
-                padding: 0;    /* Sin márgenes laterales para aprovechar espacio */
+                padding: 0;
+                /* Sin márgenes laterales para aprovechar espacio */
                 margin-top: 0;
             }
 
@@ -67,7 +69,7 @@
                 border-radius: 0;
                 /* CAMBIAMOS LA PROPORCIÓN EN MÓVIL: 
                    4/3 es más alto y evita el efecto 'estirado' */
-                aspect-ratio: 4 / 3; 
+                aspect-ratio: 1 / 1;
             }
 
             .contenido {
@@ -77,20 +79,15 @@
         }
     </style>
 </head>
+
 <body>
 
     <header class="header">
         <h1 id="inicio">GARUNA SITE</h1>
     </header>
 
-    <section class="slideshow-container">
-        <div class="slideshow" 
-             data-base="media/index/foto" 
-             data-ext=".jpg" 
-             data-total="5">
-             </div>
-    </section>
-    
+    <div class="slideshow" data-json="media/galeria/lista_fotos.json"></div>
+
     <main class="contenido">
         <p>
             El slider ahora cambia su forma en móvil para no verse como una tira delgada.
@@ -99,8 +96,10 @@
     </main>
 
     <script src="program_files/index/menu.js"></script>
+    <script src="media/galeria/lista_fotos.js"></script>
     <script src="program_files/index/picture_slide.js"></script>
     <script src="program_files/blogs/blogs.js"></script>
 
 </body>
+
 </html>
