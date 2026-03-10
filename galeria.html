@@ -20,7 +20,7 @@
             text-align: center;
         }
 
-        /* 1. SLIDESHOW: ANCHO (Para PC) */
+        /* 1. SLIDESHOW (Mantenemos tu estilo original) */
         .slideshow-container {
             width: 100%;
             max-width: 1400px;
@@ -34,7 +34,6 @@
             background-color: #333;
             border-radius: 10px;
             overflow: hidden;
-            /* PROPORCIÓN PC: Muy apaisada */
             aspect-ratio: 27 / 9;
             display: flex;
         }
@@ -42,39 +41,83 @@
         .slideshow img {
             width: 100%;
             height: 100%;
-            /* ESTO ES CLAVE: evita que la imagen se estire feo, 
-               la recorta para que rellene el hueco manteniendo su forma */
             object-fit: cover;
             display: block;
         }
 
-        /* 2. CONTENIDO: ESTRECHO (Para PC) */
+        /* 2. CONTENIDO Y GALERÍA ESTILO PINTEREST */
+        /* He ajustado el max-width a 1200px para que la galería luzca mejor que en 850px */
         .contenido {
             width: 100%;
-            max-width: 850px;
+            max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
             box-sizing: border-box;
         }
 
-        /* AJUSTES PARA MÓVIL */
+        /* ESTE ES EL CONTENEDOR DE LAS FOTOS */
+        .pinterest-gallery {
+            column-count: 4;
+            /* 4 columnas en PC */
+            column-gap: 15px;
+            width: 100%;
+        }
+
+        /* Cada tarjeta de foto */
+        .pin {
+            display: inline-block;
+            /* Evita que la foto se parta entre columnas */
+            width: 100%;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #eee;
+            transition: transform 0.3s ease;
+        }
+
+        .pin:hover {
+            transform: scale(1.02);
+        }
+
+        .pin img {
+            width: 100%;
+            display: block;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        /* AJUSTES RESPONSIVE */
+        @media (max-width: 1024px) {
+            .pinterest-gallery {
+                column-count: 3;
+                /* 3 columnas en tablets */
+            }
+        }
+
         @media (max-width: 768px) {
             .slideshow-container {
                 padding: 0;
-                /* Sin márgenes laterales para aprovechar espacio */
                 margin-top: 0;
             }
 
             .slideshow {
                 border-radius: 0;
-                /* CAMBIAMOS LA PROPORCIÓN EN MÓVIL: 
-                   4/3 es más alto y evita el efecto 'estirado' */
                 aspect-ratio: 1 / 1;
             }
 
             .contenido {
                 margin-top: 20px;
-                padding: 0 15px;
+                padding: 0 10px;
+            }
+
+            .pinterest-gallery {
+                column-count: 2;
+                /* 2 columnas en móvil (estilo Pinterest App) */
+                column-gap: 10px;
+            }
+
+            .pin {
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -86,13 +129,10 @@
     <div class="header">
         <h1 id="inicio">GARUNA SITE</h1>
     </div>
-    <div class="slideshow" data-json="media/galeria/lista_fotos.json"></div>
+    <div class="slideshow"></div>
     <!-- CONTENIDO -->
     <div class="contenido">
-        <p>
-
-        </p>
-
+        <div class="pinterest-gallery"></div>
     </div>
 
     <!-- PRIMERO: menú -->
@@ -101,6 +141,7 @@
     <!-- LUEGO: slider -->
     <script src="media/galeria/lista_fotos.js"></script>
     <script src="program_files/index/picture_slide.js"></script>
+    <script src="program_files/galeria/galeria_completa.js"></script>
 
 </body>
 
