@@ -160,7 +160,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 galeria: 'Galeria',
                 language: 'Hizkuntza'
             },
-            indexIntro: 'Ongietorri nire orrira. Hemen eduki interesgarria erakutsiko dut.'
         },
         es: {
             menu: {
@@ -169,7 +168,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 galeria: 'Galeria',
                 language: 'Idioma'
             },
-            indexIntro: 'Bienvenido a mi página. Aquí iré mostrando información y contenido interesante.'
         },
         en: {
             menu: {
@@ -178,7 +176,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 galeria: 'Gallery',
                 language: 'Language'
             },
-            indexIntro: 'Welcome to my page. I will show information and interesting content here.'
         }
     };
 
