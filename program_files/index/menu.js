@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var items = [
         { id: 'home', href: basePrefix + 'index.html' },
         { id: 'blogs', href: basePrefix + 'blogs.html' },
+        { id: 'reseñas', href: basePrefix + 'reseñas.html' },
         { id: 'galeria', href: basePrefix + 'galeria.html' }
     ];
 
@@ -157,6 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
             menu: {
                 home: 'Hasiera',
                 blogs: 'Blogak',
+                reseñas: 'Iruzkinak',
                 galeria: 'Galeria',
                 language: 'Hizkuntza'
             },
@@ -165,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
             menu: {
                 home: 'Inicio',
                 blogs: 'Blogs',
+                reseñas: 'Reseñas',
                 galeria: 'Galeria',
                 language: 'Idioma'
             },
@@ -173,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
             menu: {
                 home: 'Home',
                 blogs: 'Blogs',
+                reseñas: 'Reviews',
                 galeria: 'Gallery',
                 language: 'Language'
             },
@@ -195,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (menuLinks.home) menuLinks.home.textContent = t.menu.home;
         if (menuLinks.blogs) menuLinks.blogs.textContent = t.menu.blogs;
+        if (menuLinks.reseñas) menuLinks.reseñas.textContent = t.menu.reseñas;
         if (menuLinks.galeria) menuLinks.galeria.textContent = t.menu.galeria;
 
         // Actualizar valor seleccionado en el desplegable
@@ -261,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var ext = match[3] || '.html';
 
         // Si es index o galeria, NO cambiamos de archivo
-        if (base.toLowerCase() === 'index' || base.toLowerCase() === 'galeria' || base.toLowerCase() === 'blogs') {
+        if (base.toLowerCase() === 'index' || base.toLowerCase() === 'galeria' || base.toLowerCase() === 'blogs' || base.toLowerCase() === 'reseñas') {
             return;
         }
 
